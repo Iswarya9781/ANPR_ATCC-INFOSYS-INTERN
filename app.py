@@ -70,6 +70,10 @@ from dbconnection import get_connection
 
 import pymysql
 
+from flask import request, render_template
+import pymysql
+from dbconnection import get_connection
+import glob
 @app.route('/search', methods=['GET', 'POST'])
 def search_license_plate():
     number_plate = request.form.get('number_plate')
@@ -89,20 +93,17 @@ def search_license_plate():
             results = cursor.fetchall()
 
             if results:
-                # Only license number goes in vehicle_data
+                # License number
                 vehicle_data = {"license_no": number_plate}
 
-                # All timestamps
+                # All detections with timestamps
                 detections = [
                     {"id": row["id"], "detected_at": row["detected_at"]}
                     for row in results
                 ]
 
-                # Load images from static folder
-                import glob
+                # Load related images from static folder
                 file_list = glob.glob(f"static/vehicle_images/{number_plate}*.jpg")
-
-                # Convert to static-relative paths
                 images = [path.replace("static/", "") for path in file_list]
 
             else:
@@ -115,6 +116,7 @@ def search_license_plate():
         images=images,
         error=error
     )
+
 
 
 ################################################################################
@@ -136,9 +138,28 @@ def upload_video():
     return render_template('upload_video.html')
 
 
+from flask import render_template
+import pymysql
+import dbconnection  # your module to get MySQL connection
+
 @app.route('/results', methods=['GET'])
 def results():
-    return render_template('results.html')
+    connection = dbconnection.get_connection()
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT number_plate, timestamp, video_file FROM vehicle_data ORDER BY timestamp DESC")
+        rows = cursor.fetchall()
+
+    # Convert rows (tuples) to list of dicts for template
+    results_data = []
+    for row in rows:
+        results_data.append({
+            "plate_number": row[0],
+            "timestamp": row[1],
+            "video_file": row[2]
+        })
+
+    return render_template('results.html', results=results_data)
+
 
 @app.route('/logout')
 def logout():

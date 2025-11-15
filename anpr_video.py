@@ -839,8 +839,9 @@ def start_anpr(input_files):
                         connection = dbconnection.get_connection()
 
                         with connection.cursor() as cursor:
-                            sql_query = "INSERT INTO vehicle_data (number_plate) VALUES (%s)"
-                            cursor.execute(sql_query, (recognized_plate,))
+							
+                            sql_query = "INSERT INTO vehicle_data (number_plate, video_file) VALUES (%s, %s)"
+                            cursor.execute(sql_query, (recognized_plate,file_path))
                             connection.commit()
                             print("SQL Statement Executed:", sql_query)
 
