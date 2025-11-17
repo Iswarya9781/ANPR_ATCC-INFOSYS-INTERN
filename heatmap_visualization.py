@@ -160,7 +160,7 @@ def process_videos(video_files, model):
 
 
 if __name__ == "__main__":
-    video_path = r"C:\Users\cheta\Desktop\ANPR and ATCC for Smart Traffic Management\sample detection videos\triple riding 2.mp4"
+    video_path = r"E:\ANPR - ATCC\5638-183850414_small.mp4"
                   
     model = YOLO("yolov8n.pt")
     process_videos(video_path, model)

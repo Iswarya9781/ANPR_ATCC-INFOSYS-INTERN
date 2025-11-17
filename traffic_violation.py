@@ -14,12 +14,12 @@ from mysql.connector import Error
 # Database Connection Constants
 DB_HOST = 'localhost'
 DB_USER = 'root'
-DB_PASSWORD = '123456789'
-DB_NAME = 'mydb'
+DB_PASSWORD = 'IsWarya@7811'
+DB_NAME = 'mysql'
 
 import cv2
 # Define the license plate cascade
-license_plate_cascade = cv2.CascadeClassifier(r"C:\Users\cheta\Desktop\ANPR and ATCC for Smart Traffic Management\models\YOLO\haarcascade_russian_plate_number.xml")
+license_plate_cascade = cv2.CascadeClassifier(r"E:\ANPR - ATCC\ANPR-and-ATCC-for-Smart-Traffic-Management\models\YOLO\haarcascade_russian_plate_number.xml")
 # Ensure the file exists and is loaded correctly
 if license_plate_cascade.empty():
     raise FileNotFoundError("Haar Cascade for license plate detection not found. Ensure the path is correct.")
@@ -514,4 +514,4 @@ def main(video_path):
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    main(r"C:\Users\cheta\Desktop\ANPR and ATCC for Smart Traffic Management\sample detection videos\traffic_video.mp4")
+    main(r"E:\ANPR - ATCC\1860079-uhd_2560_1440_25fps.mp4")

@@ -12,7 +12,7 @@ def main_fun(video_path):
     }
 
     # Load YOLO model
-    model_path = r"C:\Users\cheta\Desktop\ANPR and ATCC for Smart Traffic Management\helmet.pt"
+    model_path = r"E:\ANPR - ATCC\ANPR-and-ATCC-for-Smart-Traffic-Management\helmet.pt"
     if not os.path.exists(model_path):
         raise FileNotFoundError(f"YOLO model not found: {model_path}")
     model = YOLO(model_path)
@@ -56,5 +56,5 @@ def main_fun(video_path):
 
 # calling the main function
 if __name__ == "__main__":
-    video_path = r"C:\Users\cheta\Desktop\ANPR and ATCC for Smart Traffic Management\sample detection videos\helmet detection.mp4"
+    video_path = r"E:\ANPR - ATCC\helmet detection.mp4"
     main_fun(video_path)

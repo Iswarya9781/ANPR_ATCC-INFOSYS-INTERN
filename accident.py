@@ -90,7 +90,7 @@ class AccidentDetectionSystem:
     @staticmethod
     def detect_accident(video_paths):
         """Static method to initialize and run accident detection."""
-        MODEL_PATH = r"C:\Users\cheta\Desktop\ANPR and ATCC for Smart Traffic Management\accident_best.pt"
+        MODEL_PATH = r"E:\ANPR - ATCC\ANPR-and-ATCC-for-Smart-Traffic-Management\accident_best.pt"
         CONFIDENCE_THRESHOLD = 0.4
 
         try:
@@ -100,6 +100,6 @@ class AccidentDetectionSystem:
             print(f"Error: {str(e)}")
 if __name__ == "__main__":
     AccidentDetectionSystem.detect_accident([
-        r"C:\Users\cheta\Desktop\ANPR and ATCC for Smart Traffic Management\sample detection videos\accident.mp4",
-        r"C:\Users\cheta\Desktop\ANPR and ATCC for Smart Traffic Management\sample detection videos\tri[e riding 2.mp4"
+        r"E:\ANPR - ATCC\accident.mp4"
+        
     ])

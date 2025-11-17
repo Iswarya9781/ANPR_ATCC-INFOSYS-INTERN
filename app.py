@@ -30,7 +30,7 @@ def allowed_file(filename):
 
 
 def dbconnection():
-     connection = pymysql.connect(host='127.0.0.1',database='traffic_management',user='admin',password='12345678')
+     connection = pymysql.connect(host='127.0.0.1',database='traffic_management',user='admin',password='IsWarya@7811')
      return connection
 
 
