@@ -88,7 +88,7 @@ def search_license_plate():
         with connection.cursor(pymysql.cursors.DictCursor) as cursor:
 
             # Get all matching detection timestamps
-            sql_query = "SELECT id, detected_at FROM vehicle_data WHERE number_plate = %s"
+            sql_query = "SELECT id, timestamp FROM vehicle_data WHERE number_plate = %s"
             cursor.execute(sql_query, (number_plate,))
             results = cursor.fetchall()
 
@@ -98,7 +98,7 @@ def search_license_plate():
 
                 # All detections with timestamps
                 detections = [
-                    {"id": row["id"], "detected_at": row["detected_at"]}
+                    {"id": row["id"], "detected_at": row["timestamp"]}
                     for row in results
                 ]
 

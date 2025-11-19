@@ -1,8 +1,8 @@
 import cv2 
 import numpy as np 
-# from skimage.filters import threshold_local 
+from skimage.filters import threshold_local 
 import tensorflow as tf 
-# from skimage import measure 
+from skimage import measure 
 import imutils 
 import os 
 import pymysql
